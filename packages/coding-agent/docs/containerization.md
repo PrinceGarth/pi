@@ -171,12 +171,14 @@ npm install --ignore-scripts
 
 ### Start Pi
 
-Run Pi from the working folder you want mounted:
+Pi auto-discovers extensions in `~/.pi/agent/extensions/`, so no `-e` flag is needed. Run Pi from the working folder you want mounted:
 
 ```bash
 cd /path/to/working-folder
-pi -e ~/.pi/agent/extensions/gondolin
+pi
 ```
+
+Because the extension is installed globally, every Pi session routes its tools through Gondolin. To use Gondolin only for some sessions, copy the extension somewhere outside `~/.pi/agent/extensions/` and load it explicitly with `pi -e /path/to/gondolin`.
 
 The extension mounts the host working folder at `/workspace` in the VM and overrides `read`, `write`, `edit`, `bash`, `grep`, `find`, and `ls`. File changes under `/workspace` write through to the host.
 
